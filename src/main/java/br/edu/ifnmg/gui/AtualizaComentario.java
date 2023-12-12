@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package br.edu.ifnmg.gui;
 
@@ -13,22 +13,22 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 /**
- *
  * @author joaok
+ * @author ketsu
  */
-public class AtualizarComentarios extends javax.swing.JFrame {
+public class AtualizaComentario extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ComentariosLivro
      */
-    private static AtualizarComentarios instance;
+    private static AtualizaComentario instance;
     public static Credential cred = null;
 //    private Long selectedCommentId;
 
-    public AtualizarComentarios() {
+    public AtualizaComentario() {
         initComponents();
         // Centralização da janela
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         lblcomentado.setVisible(false);
         lblSelecione.setVisible(false);
         lblSoLeitores.setVisible(false);
@@ -36,11 +36,11 @@ public class AtualizarComentarios extends javax.swing.JFrame {
         ocultarColunaId();
     }
 
-    public static AtualizarComentarios getInstance() {
+    public static AtualizaComentario getInstance() {
         if (instance == null) {
-            instance = new AtualizarComentarios();
+            instance = new AtualizaComentario();
         }
-
+        TelaPrincipal.getInstance(TelaPrincipal.current_cred).jDesktop.add(instance);
         return instance;
     }
     
@@ -62,25 +62,37 @@ public class AtualizarComentarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelAtualiza = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableComentarios = new javax.swing.JTable();
-        lblTdsLivros = new javax.swing.JLabel();
-        lblSelecione = new javax.swing.JLabel();
         lblcomentado = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         btnComentar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtComentario = new javax.swing.JTextArea();
         lblSoLeitores = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableComentarios = new javax.swing.JTable();
+        lblTdsLivros = new javax.swing.JLabel();
+        lblSelecione = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Atualizar Comentários");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
+        setClosable(true);
+
+        lblcomentado.setForeground(new java.awt.Color(0, 0, 255));
+        lblcomentado.setText("Comentário Atualizado Com Sucesso!!");
+
+        lblTitulo.setText("Novo Comentário:");
+
+        btnComentar.setText("Comentar");
+        btnComentar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComentarActionPerformed(evt);
             }
         });
+
+        txtComentario.setColumns(20);
+        txtComentario.setRows(5);
+        jScrollPane2.setViewportView(txtComentario);
+
+        lblSoLeitores.setForeground(new java.awt.Color(240, 0, 0));
+        lblSoLeitores.setText("Atualizar Comentários Apenas Para Leitores!!");
 
         tableComentarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,74 +121,55 @@ public class AtualizarComentarios extends javax.swing.JFrame {
         lblSelecione.setForeground(new java.awt.Color(240, 0, 0));
         lblSelecione.setText("Selecione um Comentário!!");
 
-        lblcomentado.setForeground(new java.awt.Color(0, 0, 255));
-        lblcomentado.setText("Comentário Atualizado Com Sucesso!!");
-
-        lblTitulo.setText("Novo Comentário:");
-
-        btnComentar.setText("Comentar");
-        btnComentar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnComentarActionPerformed(evt);
-            }
-        });
-
-        txtComentario.setColumns(20);
-        txtComentario.setRows(5);
-        jScrollPane2.setViewportView(txtComentario);
-
-        lblSoLeitores.setForeground(new java.awt.Color(240, 0, 0));
-        lblSoLeitores.setText("Atualizar Comentários Apenas Para Leitores!!");
-
-        javax.swing.GroupLayout panelAtualizaLayout = new javax.swing.GroupLayout(panelAtualiza);
-        panelAtualiza.setLayout(panelAtualizaLayout);
-        panelAtualizaLayout.setHorizontalGroup(
-            panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAtualizaLayout.createSequentialGroup()
-                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAtualizaLayout.createSequentialGroup()
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelAtualizaLayout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addComponent(lblTdsLivros, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAtualizaLayout.createSequentialGroup()
-                        .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtualizaLayout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(146, 146, 146)
                                 .addComponent(btnComentar))
-                            .addGroup(panelAtualizaLayout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jScrollPane2)
-                                    .addGroup(panelAtualizaLayout.createSequentialGroup()
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblTitulo)
                                         .addGap(210, 210, 210)))))
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtualizaLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtualizaLayout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lblSelecione)
                                 .addGap(80, 80, 80))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtualizaLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lblSoLeitores)
                                 .addGap(37, 37, 37))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtualizaLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lblcomentado, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31))))))
         );
-        panelAtualizaLayout.setVerticalGroup(
-            panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAtualizaLayout.createSequentialGroup()
-                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAtualizaLayout.createSequentialGroup()
-                        .addContainerGap(45, Short.MAX_VALUE)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(39, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelAtualizaLayout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblSelecione)
                             .addComponent(lblTdsLivros))
                         .addGap(1, 1, 1)
@@ -192,42 +185,15 @@ public class AtualizarComentarios extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
-                .addComponent(panelAtualiza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelAtualiza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        lblSelecione.setVisible(false);
-        lblcomentado.setVisible(false);
-
-//        this.setVisible(false);
-//        TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
-    }//GEN-LAST:event_formWindowClosing
 
     private void btnComentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComentarActionPerformed
         // TODO add your handling code here:
         int selectedRow = tableComentarios.getSelectedRow();
         if (selectedRow != -1) {
-            
-//            AtualizarComentarios(selectedCommentId);
+
+            //            AtualizarComentarios(selectedCommentId);
             Long selectedId = (Long) tableComentarios.getValueAt(selectedRow, 0);
             AtualizarComentarios(selectedId);
             txtComentario.setText("");
@@ -311,6 +277,7 @@ public class AtualizarComentarios extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
+        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -323,35 +290,21 @@ public class AtualizarComentarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AtualizarComentarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaComentario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AtualizarComentarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaComentario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AtualizarComentarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaComentario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AtualizarComentarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaComentario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AtualizarComentarios().setVisible(true);
+                new AtualizaComentario().setVisible(true);
             }
         });
     }
@@ -365,7 +318,6 @@ public class AtualizarComentarios extends javax.swing.JFrame {
     private javax.swing.JLabel lblTdsLivros;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblcomentado;
-    private javax.swing.JPanel panelAtualiza;
     private javax.swing.JTable tableComentarios;
     private javax.swing.JTextArea txtComentario;
     // End of variables declaration//GEN-END:variables

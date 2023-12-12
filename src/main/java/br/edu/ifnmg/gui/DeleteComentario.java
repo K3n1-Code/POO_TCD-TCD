@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package br.edu.ifnmg.gui;
 
@@ -13,31 +13,32 @@ import javax.swing.table.TableColumn;
 
 /**
  *
- * @author joaok
+ * @author ketsu
  */
-public class DeleteComentarios extends javax.swing.JFrame {
+public class DeleteComentario extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ComentariosLivro
      */
-    private static DeleteComentarios instance;
+    private static DeleteComentario instance;
     public static Credential cred = null;
 
 //    private Long selectedCommentId;
-    public DeleteComentarios() {
+    public DeleteComentario() {
         initComponents();
         // Centralização da janela
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         lblApagado.setVisible(false);
         lblSelecione.setVisible(false);
         DeleteComentariosTable();
         ocultarColunaId();
     }
 
-    public static DeleteComentarios getInstance() {
+    public static DeleteComentario getInstance() {
         if (instance == null) {
-            instance = new DeleteComentarios();
+            instance = new DeleteComentario();
         }
+        TelaPrincipal.getInstance(TelaPrincipal.current_cred).jDesktop.add(instance);
         return instance;
     }
 
@@ -59,19 +60,25 @@ public class DeleteComentarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelDelete = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableDelComentarios = new javax.swing.JTable();
-        lblTdsLivros = new javax.swing.JLabel();
         lblSelecione = new javax.swing.JLabel();
         lblApagado = new javax.swing.JLabel();
         btnComentar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableDelComentarios = new javax.swing.JTable();
+        lblTdsLivros = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Apagar Comentários");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
+        setClosable(true);
+
+        lblSelecione.setForeground(new java.awt.Color(240, 0, 0));
+        lblSelecione.setText("Selecione um Comentário!!");
+
+        lblApagado.setForeground(new java.awt.Color(0, 0, 255));
+        lblApagado.setText("Comentário Apagado Com Sucesso!!");
+
+        btnComentar.setText("Apagar");
+        btnComentar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComentarActionPerformed(evt);
             }
         });
 
@@ -99,45 +106,32 @@ public class DeleteComentarios extends javax.swing.JFrame {
         lblTdsLivros.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lblTdsLivros.setText("Meus Comentários ");
 
-        lblSelecione.setForeground(new java.awt.Color(240, 0, 0));
-        lblSelecione.setText("Selecione um Comentário!!");
-
-        lblApagado.setForeground(new java.awt.Color(0, 0, 255));
-        lblApagado.setText("Comentário Apagado Com Sucesso!!");
-
-        btnComentar.setText("Apagar");
-        btnComentar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnComentarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelDeleteLayout = new javax.swing.GroupLayout(panelDelete);
-        panelDelete.setLayout(panelDeleteLayout);
-        panelDeleteLayout.setHorizontalGroup(
-            panelDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDeleteLayout.createSequentialGroup()
-                .addGroup(panelDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnComentar)
-                    .addGroup(panelDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelDeleteLayout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelDeleteLayout.createSequentialGroup()
+                        .addGroup(layout.createSequentialGroup()
                             .addGap(63, 63, 63)
                             .addComponent(lblTdsLivros, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelDeleteLayout.createSequentialGroup()
+                        .addGroup(layout.createSequentialGroup()
                             .addGap(104, 104, 104)
                             .addComponent(lblSelecione))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeleteLayout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(lblApagado, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(33, 33, 33))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelDeleteLayout.setVerticalGroup(
-            panelDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDeleteLayout.createSequentialGroup()
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
                 .addGap(1, 1, 1)
                 .addComponent(lblTdsLivros)
                 .addGap(1, 1, 1)
@@ -146,47 +140,20 @@ public class DeleteComentarios extends javax.swing.JFrame {
                 .addComponent(lblSelecione)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblApagado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnComentar)
                 .addGap(21, 21, 21))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        lblSelecione.setVisible(false);
-        lblApagado.setVisible(false);
-
-//        this.setVisible(false);
-//        TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
-    }//GEN-LAST:event_formWindowClosing
 
     private void btnComentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComentarActionPerformed
         // TODO add your handling code here:
         int selectedRow = tableDelComentarios.getSelectedRow();
         if (selectedRow != -1) {
             // Obtém o título da coluna 'Titulo' na linha clicada
-//            DeleteComentarios(selectedCommentId);
+            //            DeleteComentarios(selectedCommentId);
             Long selectedId = (Long) tableDelComentarios.getValueAt(selectedRow, 0);
             DeleteComentarios(selectedId);
 
@@ -270,20 +237,21 @@ public class DeleteComentarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeleteComentarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteComentario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeleteComentarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteComentario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeleteComentarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteComentario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeleteComentarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteComentario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DeleteComentarios().setVisible(true);
+                new DeleteComentario().setVisible(true);
             }
         });
     }
@@ -294,7 +262,6 @@ public class DeleteComentarios extends javax.swing.JFrame {
     private javax.swing.JLabel lblApagado;
     private javax.swing.JLabel lblSelecione;
     private javax.swing.JLabel lblTdsLivros;
-    private javax.swing.JPanel panelDelete;
     private javax.swing.JTable tableDelComentarios;
     // End of variables declaration//GEN-END:variables
 }

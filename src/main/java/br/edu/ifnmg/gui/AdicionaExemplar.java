@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package br.edu.ifnmg.gui;
 
@@ -14,19 +14,19 @@ import javax.swing.table.TableColumn;
 
 /**
  *
- * @author joaok
+ * @author ketsu
  */
-public class AdicionarExemplar extends javax.swing.JFrame {
+public class AdicionaExemplar extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form DeleteLivro
      */
-    private static AdicionarExemplar instance;
+    private static AdicionaExemplar instance;
 
-    public AdicionarExemplar() {
+    public AdicionaExemplar() {
         initComponents();
         // Centralização da janela
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         lblAdd.setVisible(false);
         lblSelecione.setVisible(false);
         lblNenhum.setVisible(false);
@@ -35,11 +35,11 @@ public class AdicionarExemplar extends javax.swing.JFrame {
         ocultarColunaId();
     }
 
-    public static AdicionarExemplar getInstance() {
+    public static AdicionaExemplar getInstance() {
         if (instance == null) {
-            instance = new AdicionarExemplar();
+            instance = new AdicionaExemplar();
         }
-        instance.setAlwaysOnTop(true);
+        TelaPrincipal.getInstance(TelaPrincipal.current_cred).jDesktop.add(instance);
         return instance;
     }
 
@@ -61,25 +61,35 @@ public class AdicionarExemplar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnAddExemp = new javax.swing.JButton();
+        jSpinner = new javax.swing.JSpinner(new javax.swing.SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
+        lblAdd = new javax.swing.JLabel();
+        lblSelecione = new javax.swing.JLabel();
+        lblNenhum = new javax.swing.JLabel();
         lblTdsExemp = new javax.swing.JLabel();
         lblTdsLivros1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableLivro = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableExemplar = new javax.swing.JTable();
-        btnAddExemp = new javax.swing.JButton();
-        jSpinner = new javax.swing.JSpinner(new javax.swing.SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
-        lblAdd = new javax.swing.JLabel();
-        lblSelecione = new javax.swing.JLabel();
-        lblNenhum = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Criar Exemplares");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
+        setClosable(true);
+
+        btnAddExemp.setText("Adicionar Exemplares");
+        btnAddExemp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddExempActionPerformed(evt);
             }
         });
+
+        lblAdd.setForeground(new java.awt.Color(0, 0, 255));
+        lblAdd.setText("Exemplar Adicionado Com Sucesso!!");
+
+        lblSelecione.setForeground(new java.awt.Color(240, 0, 0));
+        lblSelecione.setText("Selecione um Livro");
+
+        lblNenhum.setForeground(new java.awt.Color(240, 0, 0));
+        lblNenhum.setText("Nenhum exemplar!!");
 
         lblTdsExemp.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lblTdsExemp.setText("Exemplares");
@@ -108,7 +118,6 @@ public class AdicionarExemplar extends javax.swing.JFrame {
         });
         tableLivro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane2.setViewportView(tableLivro);
-        tableLivro.getAccessibleContext().setAccessibleName("Adicionar Exemplar");
 
         tableExemplar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -139,22 +148,6 @@ public class AdicionarExemplar extends javax.swing.JFrame {
         tableExemplar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tableExemplar);
 
-        btnAddExemp.setText("Adicionar Exemplares");
-        btnAddExemp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddExempActionPerformed(evt);
-            }
-        });
-
-        lblAdd.setForeground(new java.awt.Color(0, 0, 255));
-        lblAdd.setText("Exemplar Adicionado Com Sucesso!!");
-
-        lblSelecione.setForeground(new java.awt.Color(240, 0, 0));
-        lblSelecione.setText("Selecione um Livro");
-
-        lblNenhum.setForeground(new java.awt.Color(240, 0, 0));
-        lblNenhum.setText("Nenhum exemplar!!");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -163,10 +156,13 @@ public class AdicionarExemplar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblSelecione)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(btnAddExemp)))
@@ -179,20 +175,19 @@ public class AdicionarExemplar extends javax.swing.JFrame {
                                     .addComponent(lblTdsLivros1))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 45, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblNenhum, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 25, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(14, 14, 14))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblTdsExemp)
-                                .addGap(117, 117, 117))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblNenhum, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblSelecione)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(91, 91, 91))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,16 +214,6 @@ public class AdicionarExemplar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        lblSelecione.setVisible(false);
-        lblAdd.setVisible(false);
-        this.setAlwaysOnTop(false);
-        this.setVisible(false);
-        //TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
-    }//GEN-LAST:event_formWindowClosing
 
     private void btnAddExempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddExempActionPerformed
         // TODO add your handling code here:
@@ -342,21 +327,23 @@ public class AdicionarExemplar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdicionarExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionaExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdicionarExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionaExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdicionarExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionaExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdicionarExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionaExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdicionarExemplar().setVisible(true);
+                new AdicionaExemplar().setVisible(true);
             }
         });
     }

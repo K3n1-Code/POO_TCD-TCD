@@ -169,9 +169,9 @@ public class Login extends javax.swing.JFrame {
             txtUsuario.requestFocus();
             txtUsuario.selectAll();
             TelaPrincipal.current_cred = usuario.getCredential();
-            Comentarios.cred = usuario.getCredential();
-            AtualizarComentarios.cred = usuario.getCredential();
-            DeleteComentarios.cred = usuario.getCredential();
+            Comentario.cred = usuario.getCredential();
+            AtualizaComentario.cred = usuario.getCredential();
+            DeleteComentario.cred = usuario.getCredential();
             TelaPrincipal.getInstance(usuario.getCredential()).setVisible(true);
 
         } else {

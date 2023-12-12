@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package br.edu.ifnmg.gui;
 
@@ -12,9 +12,9 @@ import javax.swing.table.TableColumn;
 
 /**
  *
- * @author joaok
+ * @author ketsu
  */
-public class DeleteExemplar extends javax.swing.JFrame {
+public class DeleteExemplar extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form DeleteLivro
@@ -24,7 +24,7 @@ public class DeleteExemplar extends javax.swing.JFrame {
     public DeleteExemplar() {
         initComponents();
         // Centralização da janela
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         lblDel.setVisible(false);
         lblSelecione.setVisible(false);
         DeleteCopyTable();
@@ -35,7 +35,7 @@ public class DeleteExemplar extends javax.swing.JFrame {
         if (instance == null) {
             instance = new DeleteExemplar();
         }
-        instance.setAlwaysOnTop(true);
+        TelaPrincipal.getInstance(TelaPrincipal.current_cred).jDesktop.add(instance);
         return instance;
     }
 
@@ -64,13 +64,7 @@ public class DeleteExemplar extends javax.swing.JFrame {
         lblDel = new javax.swing.JLabel();
         lblSelecione = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Apagar Exemplares");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
+        setClosable(true);
 
         lblTdsExemp.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lblTdsExemp.setText("Exemplares");
@@ -122,25 +116,20 @@ public class DeleteExemplar extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDelExemp)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 75, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(89, 89, 89))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblDel, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56))))
+                .addGap(0, 94, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDel, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTdsExemp))
+                .addGap(89, 89, 89))
             .addGroup(layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(lblTdsExemp)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnDelExemp))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,16 +150,6 @@ public class DeleteExemplar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        lblSelecione.setVisible(false);
-        lblDel.setVisible(false);
-        this.setAlwaysOnTop(false);
-        this.setVisible(false);
-        //TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
-    }//GEN-LAST:event_formWindowClosing
-
     private void btnDelExempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelExempActionPerformed
         // TODO add your handling code here:
         int selectedRow = tableDelExemplar.getSelectedRow();
@@ -185,7 +164,7 @@ public class DeleteExemplar extends javax.swing.JFrame {
             System.out.println("Selecione um exemplar antes de deletar.");
             lblSelecione.setVisible(true);
         }
-
+        
     }//GEN-LAST:event_btnDelExempActionPerformed
 
     private void DeleteCopyTable() {

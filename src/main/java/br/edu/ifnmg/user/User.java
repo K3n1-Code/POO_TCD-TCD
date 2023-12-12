@@ -2,7 +2,6 @@ package br.edu.ifnmg.user;
 
 import br.edu.ifnmg.credential.Credential;
 import br.edu.ifnmg.entity.Entity;
-import br.edu.ifnmg.librarian.Librarian;
 import br.edu.ifnmg.role.Role;
 
 import java.time.LocalDate;
@@ -104,10 +103,6 @@ public class User extends Entity {
                 + "\", Papel: \"" + this.role.getName()
                 + "\", Credencial: \"" + this.credential.getUsername() 
                 + "\"";
-    }
-
-    public Librarian asLibrarian() {
-        return (Librarian) this;
     }
 
 }

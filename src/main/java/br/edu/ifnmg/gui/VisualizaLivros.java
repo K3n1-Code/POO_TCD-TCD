@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package br.edu.ifnmg.gui;
 
@@ -12,31 +12,31 @@ import javax.swing.table.TableColumn;
 
 /**
  *
- * @author joaok
+ * @author ketsu
  */
-public class VisualizarLivros extends javax.swing.JFrame {
+public class VisualizaLivros extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form DeleteLivro
      */
-    private static VisualizarLivros instance;
+    private static VisualizaLivros instance;
 
-    public VisualizarLivros() {
+    public VisualizaLivros() {
         initComponents();
         // Centralização da janela
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         ViewBookTable();
         ocultarColunaId();
     }
 
-    public static VisualizarLivros getInstance() {
+    public static VisualizaLivros getInstance() {
         if (instance == null) {
-            instance = new VisualizarLivros();
+            instance = new VisualizaLivros();
         }
-        instance.setAlwaysOnTop(true);
+        TelaPrincipal.getInstance(TelaPrincipal.current_cred).jDesktop.add(instance);
         return instance;
     }
-    
+
     private void ocultarColunaId() {
         int columnIndex = 0;
         TableColumn colunaId = tableLivro.getColumnModel().getColumn(columnIndex);
@@ -55,18 +55,14 @@ public class VisualizarLivros extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelDelete = new javax.swing.JPanel();
+        lblTdsLivros = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableLivro = new javax.swing.JTable();
-        lblTdsLivros = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Livros Cadastrados");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
+        setClosable(true);
+
+        lblTdsLivros.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lblTdsLivros.setText("Livros Cadrastrados");
 
         tableLivro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,40 +74,8 @@ public class VisualizarLivros extends javax.swing.JFrame {
             new String [] {
                 "Id", "Titulo", "Autor", "Páginas", "Ano", "Edição"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(tableLivro);
-
-        lblTdsLivros.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        lblTdsLivros.setText("Livros Cadrastrados");
-
-        javax.swing.GroupLayout panelDeleteLayout = new javax.swing.GroupLayout(panelDelete);
-        panelDelete.setLayout(panelDeleteLayout);
-        panelDeleteLayout.setHorizontalGroup(
-            panelDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDeleteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTdsLivros, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(7, Short.MAX_VALUE))
-        );
-        panelDeleteLayout.setVerticalGroup(
-            panelDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeleteLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTdsLivros)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(194, 194, 194))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,27 +83,23 @@ public class VisualizarLivros extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTdsLivros, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTdsLivros)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        this.setVisible(false);
-        TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
-    }//GEN-LAST:event_formWindowClosing
 
     private void ViewBookTable() {
         try {
@@ -183,21 +143,23 @@ public class VisualizarLivros extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VisualizarLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizaLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VisualizarLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizaLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VisualizarLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizaLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VisualizarLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizaLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VisualizarLivros().setVisible(true);
+                new VisualizaLivros().setVisible(true);
             }
         });
     }
@@ -205,7 +167,6 @@ public class VisualizarLivros extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTdsLivros;
-    private javax.swing.JPanel panelDelete;
     private javax.swing.JTable tableLivro;
     // End of variables declaration//GEN-END:variables
 }

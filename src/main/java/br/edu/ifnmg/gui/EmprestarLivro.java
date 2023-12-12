@@ -1,13 +1,16 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package br.edu.ifnmg.gui;
 
 import br.edu.ifnmg.book.Book;
 import br.edu.ifnmg.book.BookDao;
+import br.edu.ifnmg.copy.Copy;
+import br.edu.ifnmg.copy.CopyDao;
 import br.edu.ifnmg.credential.Credential;
 import br.edu.ifnmg.credential.CredentialDao;
+import br.edu.ifnmg.emprestimo.Emprestimo;
 import br.edu.ifnmg.user.User;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -17,9 +20,9 @@ import javax.swing.table.TableColumn;
 
 /**
  *
- * @author joaok
+ * @author ketsu
  */
-public class EmprestarLivro extends javax.swing.JFrame {
+public class EmprestarLivro extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CadrastroUsuario
@@ -30,7 +33,7 @@ public class EmprestarLivro extends javax.swing.JFrame {
     public EmprestarLivro() {
         initComponents();
         // Centralização da janela
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         updateBookTable();
         ocultarColunaId();
     }
@@ -39,7 +42,7 @@ public class EmprestarLivro extends javax.swing.JFrame {
         if (instance == null) {
             instance = new EmprestarLivro();
         }
-        instance.setAlwaysOnTop(true);
+        TelaPrincipal.getInstance(TelaPrincipal.current_cred).jDesktop.add(instance);
         return instance;
     }
 
@@ -68,78 +71,17 @@ public class EmprestarLivro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        PanelCadrastro = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableLivro = new javax.swing.JTable();
-        lblSenha = new javax.swing.JLabel();
         PwdSenha = new javax.swing.JPasswordField();
         lblUsuario = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         calDate = new com.toedter.calendar.JDateChooser();
         btnSalvar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableLivro = new javax.swing.JTable();
+        lblSenha = new javax.swing.JLabel();
 
-        jMenuItem1.setText("jMenuItem1");
-
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
-
-        jMenuItem2.setText("jMenuItem2");
-
-        jMenu1.setText("jMenu1");
-
-        jMenuItem3.setText("jMenuItem3");
-
-        jMenu2.setText("jMenu2");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadrastro Usuário");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
-
-        javax.swing.GroupLayout PanelCadrastroLayout = new javax.swing.GroupLayout(PanelCadrastro);
-        PanelCadrastro.setLayout(PanelCadrastroLayout);
-        PanelCadrastroLayout.setHorizontalGroup(
-            PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        PanelCadrastroLayout.setVerticalGroup(
-            PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        tableLivro.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Id", "Titulo", "Autor", "Páginas", "Ano", "Edição"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tableLivro);
-
-        lblSenha.setText("Senha");
+        setClosable(true);
 
         PwdSenha.setText("Senha");
 
@@ -154,65 +96,89 @@ public class EmprestarLivro extends javax.swing.JFrame {
             }
         });
 
+        tableLivro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Titulo", "Autor", "Páginas", "Ano", "Edição", "Disponivel"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tableLivro);
+
+        lblSenha.setText("Senha");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(calDate, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblUsuario)
-                                    .addComponent(lblSenha))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(PwdSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(34, 34, 34))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSalvar)
-                        .addGap(18, 18, 18)))
-                .addComponent(PanelCadrastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 645, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblNome)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(calDate, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblUsuario)
+                                        .addComponent(lblSenha))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(PwdSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGap(16, 16, 16))
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addContainerGap(24, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelCadrastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNome, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(calDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblUsuario)
-                                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblSenha)
-                                    .addComponent(PwdSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(86, 86, 86)
-                                .addComponent(btnSalvar))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addGap(0, 301, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblNome, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(calDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblUsuario)
+                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblSenha)
+                                .addComponent(PwdSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(86, 86, 86)
+                            .addComponent(btnSalvar))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(21, Short.MAX_VALUE)))
         );
-
-        getAccessibleContext().setAccessibleName("Emprestar Livro");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -221,13 +187,45 @@ public class EmprestarLivro extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow = tableLivro.getSelectedRow();
         if (selectedRow != -1) {
-            ////////////////////////
-            updateBook(selectedId);
+            EmprestaLivro();
             updateBookTable();
         } else {
             System.out.println("Selecione um livro antes de adicionar um comentário.");
         }
 
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void updateBookTable() {
+        try {
+            CopyDao copyDao = new CopyDao();
+            List<Copy> copies = copyDao.findAll();
+
+            DefaultTableModel model = (DefaultTableModel) tableLivro.getModel();
+            model.setRowCount(0);
+
+            for (Copy copy : copies) {
+                Object[] rowData = {
+                    copy.getBook().getTitle(),
+                    copy.getBook().getAuthors(),
+                    copy.getBook().getPages(),
+                    copy.getBook().getYear(),
+                    copy.getBook().getEdition(),
+                    copy.isDisponivel(),};
+                model.addRow(rowData);
+            
+                tableLivro.getSelectionModel().addListSelectionListener(e -> {
+                    int selectedRow = tableLivro.getSelectedRow();
+                    if (selectedRow != -1) {
+                        selectedId = copy.getId();
+                    }
+                });
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void EmprestaLivro() {
         try {
             System.out.println("Autenticar");
             User usuario = null;
@@ -243,10 +241,10 @@ public class EmprestarLivro extends javax.swing.JFrame {
 
             if (usuario != null) {
                 System.out.println("Usuário e Senha Validos");
-                this.setVisible(false);
-                PwdSenha.setText(null);
-                txtUsuario.setText(null);
-                //Emprestimo.emprestar(getSelectedDate(calDate),TelaPrincipal.current_cred.getUser(),usuario,boxLivro.getSelectedIndex());
+                PwdSenha.setText("");
+                txtUsuario.setText("");
+
+                Emprestimo.emprestar(getSelectedDate(calDate),TelaPrincipal.current_cred.getUser(),usuario,tableLivro.getSelectedRows());
 
             } else {
 
@@ -261,53 +259,6 @@ public class EmprestarLivro extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-    }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        /*// TODO add your handling code here:
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        boxPapel.setSelectedIndex(0);
-        txtUsuario.setText("");
-        PwdSenha.setText("");
-        chkAtivo.setSelected(false);
-        txtNome.setText("");
-        txtEmail.setText("");
-        calDate.setDate(null);
-        this.setVisible(false);
-        TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);*/
-    }//GEN-LAST:event_formWindowClosing
-
-    private void updateBookTable() {
-        try {
-            BookDao bookDao = new BookDao();
-            List<Book> books = bookDao.findAll();
-
-            DefaultTableModel model = (DefaultTableModel) tableLivro.getModel();
-            model.setRowCount(0);
-
-            for (Book book : books) {
-                Object[] rowData = {
-                    book.getTitle(),
-                    book.getAuthors(),
-                    book.getPages(),
-                    book.getYear(),
-                    book.getEdition(),};
-                model.addRow(rowData);
-
-                tableLivro.getSelectionModel().addListSelectionListener(e -> {
-                    int selectedRow = tableLivro.getSelectedRow();
-                    if (selectedRow != -1) {
-                        selectedId = book.getId();
-                    }
-                });
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private void updateBook(Long selectedId) {
-
     }
 
     /**
@@ -348,18 +299,11 @@ public class EmprestarLivro extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelCadrastro;
     private javax.swing.JPasswordField PwdSenha;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.ButtonGroup buttonGroup1;
     private com.toedter.calendar.JDateChooser calDate;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSenha;

@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package br.edu.ifnmg.gui;
 
@@ -18,28 +18,28 @@ import java.time.ZoneId;
 
 /**
  *
- * @author joaok
+ * @author ketsu
  */
-public class CadrastroUsuario extends javax.swing.JFrame {
+public class CadastroUsuario extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CadrastroUsuario
      */
-    private static CadrastroUsuario instance;
+    private static CadastroUsuario instance;
 
-    public CadrastroUsuario() {
+    public CadastroUsuario() {
         initComponents();
         // Centralização da janela
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         lblCadastro.setVisible(false);
         lblIncorreto.setVisible(false);
     }
 
-    public static CadrastroUsuario getInstance() {
+    public static CadastroUsuario getInstance() {
         if (instance == null) {
-            instance = new CadrastroUsuario();
+            instance = new CadastroUsuario();
         }
-        instance.setAlwaysOnTop(true);
+        TelaPrincipal.getInstance(TelaPrincipal.current_cred).jDesktop.add(instance);
         return instance;
     }
 
@@ -59,57 +59,30 @@ public class CadrastroUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        PanelCadrastro = new javax.swing.JPanel();
-        lblPapel = new javax.swing.JLabel();
-        lblUsuario = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
-        lblSenha = new javax.swing.JLabel();
+        lblCadastro = new javax.swing.JLabel();
         pwdSenha = new javax.swing.JTextField();
+        lblIncorreto = new javax.swing.JLabel();
         chkAtivo = new javax.swing.JCheckBox();
         lblNome = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         lblAniversario = new javax.swing.JLabel();
+        lblPapel = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
+        lblUsuario = new javax.swing.JLabel();
         calDate = new com.toedter.calendar.JDateChooser();
+        txtUsuario = new javax.swing.JTextField();
         boxPapel = new javax.swing.JComboBox<>();
-        lblCadastro = new javax.swing.JLabel();
-        lblIncorreto = new javax.swing.JLabel();
+        lblSenha = new javax.swing.JLabel();
 
-        jMenuItem1.setText("jMenuItem1");
+        setClosable(true);
 
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+        lblCadastro.setForeground(new java.awt.Color(0, 0, 255));
+        lblCadastro.setText("Usuário Cadastrado!!");
 
-        jMenuItem2.setText("jMenuItem2");
-
-        jMenu1.setText("jMenu1");
-
-        jMenuItem3.setText("jMenuItem3");
-
-        jMenu2.setText("jMenu2");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadrastro Usuário");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
-
-        lblPapel.setText("Papel:");
-
-        lblUsuario.setText("Usuário:");
-
-        lblSenha.setText("Senha:");
+        lblIncorreto.setForeground(new java.awt.Color(240, 0, 0));
+        lblIncorreto.setText("Campos Indefinidos Troque-os!!");
 
         chkAtivo.setText("Ativo");
 
@@ -119,6 +92,8 @@ public class CadrastroUsuario extends javax.swing.JFrame {
 
         lblAniversario.setText("Data de Aniversario:");
 
+        lblPapel.setText("Papel:");
+
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,117 +101,97 @@ public class CadrastroUsuario extends javax.swing.JFrame {
             }
         });
 
+        lblUsuario.setText("Usuário:");
+
         boxPapel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Administrador", "Bibliotecário", "Leitor" }));
 
-        lblCadastro.setForeground(new java.awt.Color(0, 0, 255));
-        lblCadastro.setText("Usuário Cadastrado!!");
-
-        lblIncorreto.setForeground(new java.awt.Color(240, 0, 0));
-        lblIncorreto.setText("Campos Indefinidos Troque-os!!");
-
-        javax.swing.GroupLayout PanelCadrastroLayout = new javax.swing.GroupLayout(PanelCadrastro);
-        PanelCadrastro.setLayout(PanelCadrastroLayout);
-        PanelCadrastroLayout.setHorizontalGroup(
-            PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadrastroLayout.createSequentialGroup()
-                .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelCadrastroLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelCadrastroLayout.createSequentialGroup()
-                                .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblSenha)
-                                    .addComponent(lblUsuario)
-                                    .addComponent(lblPapel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PanelCadrastroLayout.createSequentialGroup()
-                                        .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                            .addComponent(pwdSenha))
-                                        .addGap(83, 83, 83)
-                                        .addComponent(chkAtivo))
-                                    .addComponent(boxPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(PanelCadrastroLayout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblEmail)
-                                    .addComponent(lblNome))
-                                .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PanelCadrastroLayout.createSequentialGroup()
-                                        .addGap(5, 5, 5)
-                                        .addComponent(txtEmail))
-                                    .addGroup(PanelCadrastroLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtNome))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelCadrastroLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(117, 117, 117)
-                        .addComponent(btnSalvar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelCadrastroLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(lblAniversario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(calDate, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelCadrastroLayout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(lblIncorreto)))
-                        .addGap(0, 163, Short.MAX_VALUE)))
-                .addGap(45, 45, 45))
-        );
-        PanelCadrastroLayout.setVerticalGroup(
-            PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCadrastroLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPapel)
-                    .addComponent(boxPapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsuario)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSenha)
-                    .addComponent(pwdSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chkAtivo))
-                .addGap(58, 58, 58)
-                .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNome)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmail)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAniversario)
-                    .addComponent(calDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(lblIncorreto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PanelCadrastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(lblCadastro))
-                .addGap(49, 49, 49))
-        );
+        lblSenha.setText("Senha:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanelCadrastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblSenha)
+                                    .addComponent(lblUsuario)
+                                    .addComponent(lblPapel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                                            .addComponent(pwdSenha))
+                                        .addGap(83, 83, 83)
+                                        .addComponent(chkAtivo))
+                                    .addComponent(boxPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblEmail)
+                                    .addComponent(lblNome))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(5, 5, 5)
+                                        .addComponent(txtEmail))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtNome))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(lblAniversario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(calDate, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 79, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(98, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(lblCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblIncorreto))
+                        .addGap(93, 93, 93)
+                        .addComponent(btnSalvar)))
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanelCadrastro, javax.swing.GroupLayout.PREFERRED_SIZE, 406, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPapel)
+                    .addComponent(boxPapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUsuario)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSenha)
+                    .addComponent(pwdSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkAtivo))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNome)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmail)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAniversario)
+                    .addComponent(calDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(lblIncorreto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(lblCadastro))
+                .addGap(49, 49, 49))
         );
 
         pack();
@@ -271,10 +226,10 @@ public class CadrastroUsuario extends javax.swing.JFrame {
                 L = new LibrarianDao().findById(user_id);
                 new LibrarianDao().saveOrUpdate(L);
                 System.out.println("Bibliotecário Cadastrado!!");
-                instance.setAlwaysOnTop(false);
+                //instance.setAlwaysOnTop(false);
                 lblCadastro.setVisible(true);
-//                this.setVisible(false);
-//                TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
+                //                this.setVisible(false);
+                //                TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
                 System.out.println(L.toString());
             } else if (boxPapel.getSelectedItem().toString().equals("Leitor")) {
                 Reader joao = null;
@@ -289,11 +244,11 @@ public class CadrastroUsuario extends javax.swing.JFrame {
 
                 joao = new ReaderDao().findById(user_id);
                 new ReaderDao().saveOrUpdate(joao);
-                instance.setAlwaysOnTop(false);
+                //instance.setAlwaysOnTop(false);
                 System.out.println("Leitor Cadastrado!!");
                 lblCadastro.setVisible(true);
-//                this.setVisible(false);
-//                TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
+                //                this.setVisible(false);
+                //                TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
                 System.out.println(joao.toString());
             } else if (boxPapel.getSelectedItem().toString().equals("Administrador")) {
                 Adm adm = null;
@@ -308,11 +263,11 @@ public class CadrastroUsuario extends javax.swing.JFrame {
 
                 adm = new AdmDao().findById(user_id);
                 new AdmDao().saveOrUpdate(adm);
-                instance.setAlwaysOnTop(false);
+                //instance.setAlwaysOnTop(false);
                 System.out.println("Administrador Cadastrado!!");
                 lblCadastro.setVisible(true);
-//                this.setVisible(false);
-//                TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
+                //                this.setVisible(false);
+                //                TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
                 System.out.println(adm.toString());
             }
             boxPapel.setSelectedIndex(0);
@@ -329,21 +284,6 @@ public class CadrastroUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        boxPapel.setSelectedIndex(0);
-        txtUsuario.setText("");
-        pwdSenha.setText("");
-        chkAtivo.setSelected(false);
-        txtNome.setText("");
-        txtEmail.setText("");
-        calDate.setDate(null);
-        lblCadastro.setVisible(false);
-        lblIncorreto.setVisible(false);
-//        this.setVisible(false);
-//        TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
-    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -362,38 +302,32 @@ public class CadrastroUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadrastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadrastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadrastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadrastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadrastroUsuario().setVisible(true);
+                new CadastroUsuario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelCadrastro;
     private javax.swing.JComboBox<String> boxPapel;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.ButtonGroup buttonGroup1;
     private com.toedter.calendar.JDateChooser calDate;
     private javax.swing.JCheckBox chkAtivo;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JLabel lblAniversario;
     private javax.swing.JLabel lblCadastro;
     private javax.swing.JLabel lblEmail;

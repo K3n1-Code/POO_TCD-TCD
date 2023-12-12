@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package br.edu.ifnmg.gui;
 
@@ -13,31 +13,31 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 /**
- *
  * @author joaok
+ * @author ketsu
  */
-public class AtualizarExemplar extends javax.swing.JFrame {
+public class AtualizaExemplar extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form DeleteLivro
      */
-    private static AtualizarExemplar instance;
+    private static AtualizaExemplar instance;
 
-    public AtualizarExemplar() {
+    public AtualizaExemplar() {
         initComponents();
         // Centralização da janela
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         lblAtualizado.setVisible(false);
         lblSelecione.setVisible(false);
         AtualizaCopyTable();
         ocultarColunaId();
     }
 
-    public static AtualizarExemplar getInstance() {
+    public static AtualizaExemplar getInstance() {
         if (instance == null) {
-            instance = new AtualizarExemplar();
+            instance = new AtualizaExemplar();
         }
-        instance.setAlwaysOnTop(true);
+        TelaPrincipal.getInstance(TelaPrincipal.current_cred).jDesktop.add(instance);
         return instance;
     }
 
@@ -59,20 +59,17 @@ public class AtualizarExemplar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblSelecione = new javax.swing.JLabel();
         lblTdsExemp = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableExemplar = new javax.swing.JTable();
         btnAtualizaExemp = new javax.swing.JButton();
         lblAtualizado = new javax.swing.JLabel();
-        lblSelecione = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Atualizar Exemplares");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
+        setClosable(true);
+
+        lblSelecione.setForeground(new java.awt.Color(240, 0, 0));
+        lblSelecione.setText("Selecione um Exemplar!!");
 
         lblTdsExemp.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lblTdsExemp.setText("Exemplares");
@@ -108,9 +105,6 @@ public class AtualizarExemplar extends javax.swing.JFrame {
 
         lblAtualizado.setForeground(new java.awt.Color(0, 0, 255));
         lblAtualizado.setText("Exemplar Atualizado Com Sucesso!!");
-
-        lblSelecione.setForeground(new java.awt.Color(240, 0, 0));
-        lblSelecione.setText("Selecione um Exemplar!!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,20 +150,10 @@ public class AtualizarExemplar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public AtualizarExemplar(JTable tableExemplar) {
+    public AtualizaExemplar(JTable tableExemplar) {
         this.tableExemplar = tableExemplar;
     }
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        lblSelecione.setVisible(false);
-        lblAtualizado.setVisible(false);
-        this.setAlwaysOnTop(false);
-        this.setVisible(false);
-        //TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
-    }//GEN-LAST:event_formWindowClosing
-
+    
     private void btnAtualizaExempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizaExempActionPerformed
         // TODO add your handling code here:
         int selectedRow = tableExemplar.getSelectedRow();
@@ -236,6 +220,7 @@ public class AtualizarExemplar extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -248,27 +233,21 @@ public class AtualizarExemplar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AtualizarExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AtualizarExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AtualizarExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AtualizarExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaExemplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AtualizarExemplar().setVisible(true);
+                new AtualizaExemplar().setVisible(true);
             }
         });
     }

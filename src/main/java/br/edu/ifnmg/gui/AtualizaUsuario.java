@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package br.edu.ifnmg.gui;
 
@@ -15,7 +15,7 @@ import javax.swing.table.TableColumn;
  *
  * @author joaok
  */
-public class AtualizaUsuario extends javax.swing.JFrame {
+public class AtualizaUsuario extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form AtualizaUsuario
@@ -25,7 +25,7 @@ public class AtualizaUsuario extends javax.swing.JFrame {
     public AtualizaUsuario() {
         initComponents();
         // Centralização da janela
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         lblAtualizado.setVisible(false);
         lblSelecione.setVisible(false);
         updateUsuarioTable();
@@ -36,10 +36,10 @@ public class AtualizaUsuario extends javax.swing.JFrame {
         if (instance == null) {
             instance = new AtualizaUsuario();
         }
-
+        TelaPrincipal.getInstance(TelaPrincipal.current_cred).jDesktop.add(instance);
         return instance;
     }
-
+    
     private void ocultarColunaId() {
         int columnIndex = 0;
         TableColumn colunaId = tableUsuario.getColumnModel().getColumn(columnIndex);
@@ -48,7 +48,7 @@ public class AtualizaUsuario extends javax.swing.JFrame {
         colunaId.setPreferredWidth(0);
         colunaId.setResizable(false);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,31 +58,24 @@ public class AtualizaUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelAtualiza = new javax.swing.JPanel();
+        txtAniversario = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableUsuario = new javax.swing.JTable();
-        lblTdsUsuario = new javax.swing.JLabel();
-        lblSelecione = new javax.swing.JLabel();
-        lblAtualizado = new javax.swing.JLabel();
-        lblTitulo = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
-        lblAutor = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        lblPaginas = new javax.swing.JLabel();
-        txtAniversario = new javax.swing.JTextField();
-        lblAno = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        lblEdicao = new javax.swing.JLabel();
         txtSenha = new javax.swing.JTextField();
+        lblTitulo = new javax.swing.JLabel();
+        lblAtualizado = new javax.swing.JLabel();
+        lblAutor = new javax.swing.JLabel();
         btnAtualiza = new javax.swing.JButton();
+        lblPaginas = new javax.swing.JLabel();
+        lblAno = new javax.swing.JLabel();
+        lblEdicao = new javax.swing.JLabel();
+        lblSelecione = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        lblTdsUsuario = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Atualizar Livro");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
+        setClosable(true);
 
         tableUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,35 +87,15 @@ public class AtualizaUsuario extends javax.swing.JFrame {
             new String [] {
                 "Id", "Nome", "Email", "Aniversário", "Papel"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(tableUsuario);
 
-        lblTdsUsuario.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        lblTdsUsuario.setText("Usuários Cadrastrados");
-
-        lblSelecione.setForeground(new java.awt.Color(240, 0, 0));
-        lblSelecione.setText("Selecione um Usuário");
+        lblTitulo.setText("Nome:");
 
         lblAtualizado.setForeground(new java.awt.Color(0, 0, 255));
         lblAtualizado.setText("Usuário Atualizado Com Sucesso!!");
 
-        lblTitulo.setText("Nome:");
-
         lblAutor.setText("Email:");
-
-        lblPaginas.setText("Data de Aniversário:");
-
-        lblAno.setText("Usuário:");
-
-        lblEdicao.setText("Senha:");
 
         btnAtualiza.setText("Atualizar");
         btnAtualiza.addActionListener(new java.awt.event.ActionListener() {
@@ -131,127 +104,99 @@ public class AtualizaUsuario extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelAtualizaLayout = new javax.swing.GroupLayout(panelAtualiza);
-        panelAtualiza.setLayout(panelAtualizaLayout);
-        panelAtualizaLayout.setHorizontalGroup(
-            panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAtualizaLayout.createSequentialGroup()
-                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelAtualizaLayout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(lblTdsUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAtualizaLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelAtualizaLayout.createSequentialGroup()
-                                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblAutor)
-                                    .addComponent(lblTitulo))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(24, Short.MAX_VALUE))
-                            .addGroup(panelAtualizaLayout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelAtualizaLayout.createSequentialGroup()
-                                        .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(panelAtualizaLayout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(btnAtualiza)
-                                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtAniversario, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelAtualizaLayout.createSequentialGroup()
-                                                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(lblEdicao)
-                                                    .addComponent(lblAno))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtUsuario)
-                                                    .addComponent(txtSenha))))
-                                        .addGap(25, 25, 25))
-                                    .addGroup(panelAtualizaLayout.createSequentialGroup()
-                                        .addComponent(lblPaginas)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtualizaLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtualizaLayout.createSequentialGroup()
-                                .addComponent(lblAtualizado, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(73, 73, 73))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtualizaLayout.createSequentialGroup()
-                                .addComponent(lblSelecione)
-                                .addGap(130, 130, 130))))))
-        );
-        panelAtualizaLayout.setVerticalGroup(
-            panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAtualizaLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitulo)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAutor)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAniversario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPaginas))
-                .addGap(23, 23, 23)
-                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAno)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblAtualizado)
-                .addGap(18, 18, 18)
-                .addComponent(btnAtualiza)
-                .addGap(45, 45, 45))
-            .addGroup(panelAtualizaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelAtualizaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTdsUsuario)
-                    .addComponent(lblSelecione))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
-        );
+        lblPaginas.setText("Data de Aniversário:");
+
+        lblAno.setText("Usuário:");
+
+        lblEdicao.setText("Senha:");
+
+        lblSelecione.setForeground(new java.awt.Color(240, 0, 0));
+        lblSelecione.setText("Selecione um Usuário");
+
+        lblTdsUsuario.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lblTdsUsuario.setText("Usuários Cadrastrados");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelAtualiza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblAno)
+                                        .addComponent(lblPaginas)
+                                        .addComponent(lblEdicao)
+                                        .addComponent(lblAutor))
+                                    .addComponent(lblTitulo, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtNome)
+                                    .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                                    .addComponent(txtSenha)
+                                    .addComponent(txtAniversario, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(lblAtualizado, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(122, 122, 122)
+                                .addComponent(btnAtualiza))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(105, 105, 105)
+                                .addComponent(lblSelecione))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(lblTdsUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelAtualiza, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTdsUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTitulo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAutor)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPaginas)
+                            .addComponent(txtAniversario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAno))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblSelecione)
+                        .addGap(7, 7, 7)
+                        .addComponent(lblAtualizado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAtualiza)
+                        .addGap(9, 9, 9))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        lblSelecione.setVisible(false);
-        lblAtualizado.setVisible(false);
-
-        this.setVisible(false);
-//        TelaPrincipal.getInstance(TelaPrincipal.current_cred).setVisible(true);
-    }//GEN-LAST:event_formWindowClosing
 
     private void btnAtualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizaActionPerformed
         // TODO add your handling code here:
@@ -270,7 +215,8 @@ public class AtualizaUsuario extends javax.swing.JFrame {
                     credential.getUser().getName(),
                     credential.getUser().getEmail(),
                     formattedDate,
-                    credential.getUser().getRole().getName(),};
+                    credential.getUser().getRole().getName(),
+                };
                 model.addRow(rowData);
             }
 
@@ -296,10 +242,6 @@ public class AtualizaUsuario extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    private void updateUsuario(Long selectedId) {
-//    
     }
 
     /**
@@ -329,8 +271,6 @@ public class AtualizaUsuario extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -351,7 +291,6 @@ public class AtualizaUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel lblSelecione;
     private javax.swing.JLabel lblTdsUsuario;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JPanel panelAtualiza;
     private javax.swing.JTable tableUsuario;
     private javax.swing.JTextField txtAniversario;
     private javax.swing.JTextField txtEmail;
